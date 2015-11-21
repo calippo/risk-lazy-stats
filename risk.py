@@ -11,8 +11,7 @@ def run(attack_outcome, defence_outcome):
     min_length = min(len(attack_outcome), len(defence_outcome))
     sorted_attack = sorted(attack_outcome, reverse=True)[:min_length]
     sorted_defence = sorted(defence_outcome, reverse=True)[:min_length]
-    outcome = map(operator.sub, sorted_attack, sorted_defence)
-    attack_wins = [True if o > 0 else False for o in outcome]
+    attack_wins = map(operator.gt, sorted_attack, sorted_defence)
     return Counter(attack_wins)
 
 def simulation(attack, defence):
